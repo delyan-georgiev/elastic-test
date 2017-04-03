@@ -3,10 +3,10 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.createTable('Products',{
-    	id: {
-    		type: Sequelize.INTEGER,
+		id: {
+			type: Sequelize.INTEGER,
 			primaryKey: true,
-			autoincrement: true
+			autoIncrement: true
 		},
 		title: {
     		type: Sequelize.STRING,
@@ -27,6 +27,12 @@ module.exports = {
     		type: Sequelize.FLOAT,
 			allowNull: false,
 			defaultValue: 0
+		},
+		createdAt: {
+			type: Sequelize.DATE
+		},
+		updatedAt: {
+			type: Sequelize.DATE
 		}
 	})
   },
