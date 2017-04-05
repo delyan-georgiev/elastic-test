@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {ProductService} from './product.service';
+import {ProductService} from '../product.service';
 import { Product } from '../models/product.model';
 
 @Component({
@@ -20,7 +20,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.model);
     this.productService.create(this.model);
   }
 

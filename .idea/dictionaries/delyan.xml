@@ -2,6 +2,8 @@
   <dictionary name="delyan">
     <words>
       <w>auxionize</w>
+      <w>elasticsearch</w>
+      <w>sequelize</w>
     </words>
   </dictionary>
 </component>

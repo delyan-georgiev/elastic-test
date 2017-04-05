@@ -1,0 +1,30 @@
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td *ngIf="!product.inEditMode">{{ product.title }}</td>
+      <td *ngIf="product.inEditMode"><input type="text" name="title" [(ngModel)]="product.title"></td>
+      <td *ngIf="!product.inEditMode">{{ product.description }}</td>
+      <td *ngIf="product.inEditMode"><input type="text" name="description" [(ngModel)]="product.description"></td>
+      <td *ngIf="!product.inEditMode">{{ product.category }}</td>
+      <td *ngIf="product.inEditMode"><input type="text" name="category" [(ngModel)]="product.category"></td>
+      <td *ngIf="!product.inEditMode">{{ product.price }}</td>
+      <td *ngIf="product.inEditMode"><input type="text" name="price" [(ngModel)]="product.price"></td>
+      <td>
+        <button *ngIf="!product.inEditMode" class="btn btn-sm btn-default" (click)="onToggleEdit(product)">Edit</button>
+        <button *ngIf="product.inEditMode" class="btn btn-sm btn-default" (click)="onToggleEdit(product)">Cancel</button>
+        <button *ngIf="product.inEditMode" class="btn btn-sm btn-primary" (click)="onToggleEdit(product); onSave(product)">Save</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

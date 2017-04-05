@@ -1,0 +1,26 @@
+{
+  "name": "aux-elastic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "elasticsearch": "^12.1.3",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delyan-georgiev/elastic-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delyan-georgiev/elastic-test/issues"
+  },
+  "homepage": "https://github.com/delyan-georgiev/elastic-test#readme"
+}
