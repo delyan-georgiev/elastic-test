@@ -21,6 +21,9 @@
       <td *ngIf="!product.inEditMode">{{ product.price }}</td>
       <td *ngIf="product.inEditMode"><input type="text" name="price" [(ngModel)]="product.price"></td>
       <td>
+        <button class="btn btn-sm btn-primary" (click)="addToOrder(product.id)">Order</button>
+      </td>
+      <td>
         <button *ngIf="!product.inEditMode" class="btn btn-sm btn-default" (click)="onToggleEdit(product)">Edit</button>
         <button *ngIf="product.inEditMode" class="btn btn-sm btn-default" (click)="onToggleEdit(product)">Cancel</button>
         <button *ngIf="product.inEditMode" class="btn btn-sm btn-primary" (click)="onToggleEdit(product); onSave(product)">Save</button>

@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <!--<div class="form-group">-->
     <input type="text" name="title" [(ngModel)]="searchObject.queryString" class="col-md-5">
     <div class="select">
       <select name="category" [(ngModel)]="searchObject.category">
-        <option value="">--</option>
+        <option value="">Search by category</option>
         <option *ngFor="let cat of categories" [value]="cat" >{{cat}}</option>
       </select>
     </div>
     <button class="btn btn-primary" (click)="onSearch()">Search</button>
-    <!--</div>-->
   </div>
   <app-products-table [products]="results"></app-products-table>
+  <br>
+  <app-order-create></app-order-create>
 </div>

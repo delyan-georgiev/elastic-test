@@ -9,6 +9,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { ProductService } from './product.service';
 import { ProductsTableComponent } from './products-table/products-table.component';
+import { OrderCreateComponent } from './order-create/order-create.component';
 
 const ROUTES = [
   {
@@ -31,7 +32,8 @@ const ROUTES = [
     AppComponent,
     CreateProductComponent,
     ProductSearchComponent,
-    ProductsTableComponent
+    ProductsTableComponent,
+    OrderCreateComponent
   ],
   imports: [
     BrowserModule,
