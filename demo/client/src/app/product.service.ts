@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ProductService {
+  public static PRODUCT_CATEGORIES = ['All', 'Electronics', 'Clothes', 'Toys', 'Accessories'];
 
   constructor(private http: Http) {
     this.http = http;
@@ -27,7 +28,8 @@ export class ProductService {
       );
   }
 
-  searchTitle(search: string) {
+  searchTitle(search: Object) {
+    console.error('service search', search);
     return this.http.post('api/search', {search})
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -41,6 +43,14 @@ export class ProductService {
         error => {
           console.error(JSON.stringify(error.json()));
         }
+      );
+  }
+
+  remove(id: number) {
+    return this.http.post('api/delete', {id})
+      .subscribe(
+        (res: Response) => res.json(),
+        (error: any) => Observable.throw(error.json().error || 'ServerError')
       );
   }
 

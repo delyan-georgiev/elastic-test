@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <!--<div class="form-group">-->
-    <input type="text" name="title" [(ngModel)]="search" class="col-md-8">
+    <input type="text" name="title" [(ngModel)]="searchObject.queryString" class="col-md-5">
+    <div class="select">
+      <select name="category" [(ngModel)]="searchObject.category">
+        <option value="">--</option>
+        <option *ngFor="let cat of categories" [value]="cat" >{{cat}}</option>
+      </select>
+    </div>
     <button class="btn btn-primary" (click)="onSearch()">Search</button>
     <!--</div>-->
   </div>

@@ -11,7 +11,7 @@ import { Product } from '../models/product.model';
 
 export class CreateProductComponent implements OnInit {
   // mode = 'Observable';
-  categories = ['All', 'Electronics', 'Clothes', 'Toys', 'Accessories'];
+  categories = ProductService.PRODUCT_CATEGORIES;
 
   model = new Product('', '', 'All', null);
 

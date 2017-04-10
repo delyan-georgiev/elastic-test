@@ -16,19 +16,19 @@ router.get('/', (req, res) => {
 router.post('/add', co.wrap(function*(req, res, next) {
 	let productData = req.body;
 	let product = yield db.Product.create(productData);
-	yield elastic.create('auction', 'regular', product.id, productData);
+	yield elastic.create('search', 'product', product.id, productData);
 }));
 
 router.post('/search', co.wrap(function*(req, res, next) {
 	// let ids = [];
 	let products = [];
+	let textFields = ['title', 'description'];
 	/*optional: fields:[] if not provided will search in all fields*/
-	let elasticResult = yield elastic.stringSearch('auction', req.body.search);
+	console.error('body searh', req.body.search, typeof req.body.search);
+	let elasticResult = yield elastic.search('search', req.body.search, textFields);
 	if(elasticResult.hits.total > 0) {
 		let ids = _.map(elasticResult.hits.hits, (h)=>h._id);
 		products = yield db.Product.findAll({where: {id: {$in: ids}}});
-
-		console.error(elasticResult.hits);
 	}
 
 	res.jsonp(products);
@@ -41,16 +41,22 @@ router.get('/getAll', co.wrap(function*(req, res, next) {
 }));
 
 router.post('/edit', co.wrap(function*(req, res, next) {
-	console.error('@roter edit');
 	let product = req.body;
 
-	let response = yield elastic.update('auction', 'regular', product.id, product);
-	console.error(response);
+	let response = yield elastic.update('search', 'product', product.id, product);
 	let productRecord = yield db.Product.findById(product.id);
 	_.extend(productRecord, product);
 	yield productRecord.save();
 
 	res.jsonp(true);
+}));
+
+router.post('/delete', co.wrap(function*(req, res, next) {
+	let id = req.body.id;
+	console.error('@deleteRoute', req.body);
+	yield elastic.remove('search', 'product', id);
+	yield db.Product.destroy({where: {id}});
+
 }));
 
 module.exports = router;

@@ -7,8 +7,8 @@ import {ProductService} from '../product.service';
   styleUrls: ['./products-table.component.css']
 })
 export class ProductsTableComponent implements OnInit {
-  @Input() products = {};
-  inEditMode = false;
+  @Input() products: Array<Object>;
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
@@ -16,9 +16,8 @@ export class ProductsTableComponent implements OnInit {
 
     this.productService.getAllProducts()
       .subscribe((results: Array<Object>) => {
-          console.error(results);
           self.products = results;
-        }, // Bind to view
+        },
         err => {
           // Log errors if any
           console.log(err);
@@ -30,8 +29,13 @@ export class ProductsTableComponent implements OnInit {
   }
 
   onSave(product: Object) {
-    console.error('@onSave');
     this.productService.edit(product);
+  }
+
+  onDelete(product: {id: number}) {
+    this.productService.remove(product.id);
+
+    this.products.splice(this.products.indexOf(product), 1);
   }
 
 }

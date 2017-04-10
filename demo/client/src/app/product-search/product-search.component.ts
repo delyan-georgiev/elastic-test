@@ -8,8 +8,9 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./product-search.component.css']
 })
 export class ProductSearchComponent implements OnInit {
-  search = '';
+  searchObject = {queryString: '', category: ''};
   results: any;
+  categories = ProductService.PRODUCT_CATEGORIES;
 
   constructor(private productService: ProductService) {
   }
@@ -21,7 +22,7 @@ export class ProductSearchComponent implements OnInit {
   onSearch() {
     const self = this;
 
-    this.productService.searchTitle(this.search)
+    this.productService.searchTitle(this.searchObject)
       .subscribe((results: Array<Object>) => {
           self.results = results;
         }, // Bind to view

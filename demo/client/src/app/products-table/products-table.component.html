@@ -7,6 +7,7 @@
       <th>Category</th>
       <th>Price</th>
       <th>Edit</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,9 @@
         <button *ngIf="!product.inEditMode" class="btn btn-sm btn-default" (click)="onToggleEdit(product)">Edit</button>
         <button *ngIf="product.inEditMode" class="btn btn-sm btn-default" (click)="onToggleEdit(product)">Cancel</button>
         <button *ngIf="product.inEditMode" class="btn btn-sm btn-primary" (click)="onToggleEdit(product); onSave(product)">Save</button>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="onDelete(product)">Delete</button>
       </td>
     </tr>
     </tbody>
