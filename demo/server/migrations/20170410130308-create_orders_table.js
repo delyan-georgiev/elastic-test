@@ -11,13 +11,6 @@ module.exports = {
 		name: {
 			type: Sequelize.STRING,
 			allowNull: false
-		},
-		owner: {
-			type: Sequelize.STRING,
-			allowNull: false
-		},
-		total: {
-			type: Sequelize.INTEGER,
 		}
 	})
   },

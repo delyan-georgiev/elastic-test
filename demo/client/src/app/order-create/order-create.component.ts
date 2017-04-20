@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {OrderService} from '../order.service';
 
 @Component({
   selector: 'app-order-create',
@@ -6,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-create.component.css']
 })
 export class OrderCreateComponent implements OnInit {
+  @Input() orderProducts = [];
   name: string;
-  orderProducts: number;
-  constructor() { }
+  constructor(private OrderService: OrderService) { }
 
   ngOnInit() {
+  }
+
+  createOrder() {
+    this.OrderService.createOrder(this.name, this.orderProducts);
   }
 
 }

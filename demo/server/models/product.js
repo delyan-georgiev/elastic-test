@@ -24,6 +24,19 @@ module.exports = function(sequelize, DataTypes) {
 		price: {
 			type: DataTypes.INTEGER,
 		},
+		OrderId: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'Order',
+				key: 'id'
+			}
+		}
+	}, {
+		classMethods: {
+			associate: function() {
+				this.belongsTo(sequelize.models.Order);
+			}
+		}
 	});
 
 	return Product;

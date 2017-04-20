@@ -1,10 +1,13 @@
-<div class="container">
+<div class="container" *ngIf="orderProducts.length">
+  <h3>Create New Product</h3>
+  <form action="" class="form-horizontal" #orderForm="ngForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
   <section class="form-block">
     <div class="form-group">
       <label for="order">Order name</label>
       <input type="text" name="name" [(ngModel)]="name" id="order">
     </div>
-    <p>Products: {{orderProducts}}</p>
-    <button class="btn btn-sm btn-primary">Create order</button>
+    <p>Products: {{orderProducts.length}}</p>
+    <button class="btn btn-sm btn-primary" (click)="createOrder(name)">Create order</button>
   </section>
+  </form>
 </div>

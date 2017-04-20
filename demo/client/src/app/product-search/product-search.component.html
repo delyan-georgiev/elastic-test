@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <input type="text" name="title" [(ngModel)]="searchObject.queryString" class="col-md-5">
+    <input type="text" name="title" [(ngModel)]="searchObject.queryString" class="col-md-5" (keyup.enter)="onSearch()">
     <div class="select">
       <select name="category" [(ngModel)]="searchObject.category">
         <option value="">Search by category</option>
@@ -10,6 +10,4 @@
     <button class="btn btn-primary" (click)="onSearch()">Search</button>
   </div>
   <app-products-table [products]="results"></app-products-table>
-  <br>
-  <app-order-create></app-order-create>
 </div>

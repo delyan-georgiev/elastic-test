@@ -56,7 +56,6 @@ router.post('/delete', co.wrap(function*(req, res, next) {
 	console.error('@deleteRoute', req.body);
 	yield elastic.remove('search', 'product', id);
 	yield db.Product.destroy({where: {id}});
-
 }));
 
 module.exports = router;

@@ -28,6 +28,10 @@ module.exports = {
 			allowNull: false,
 			defaultValue: 0
 		},
+		OrderId: {
+			type: Sequelize.INTEGER,
+			allowNull: false
+		},
 		createdAt: {
 			type: Sequelize.DATE
 		},

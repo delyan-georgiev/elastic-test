@@ -10,6 +10,8 @@ import { ProductSearchComponent } from './product-search/product-search.componen
 import { ProductService } from './product.service';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { OrderCreateComponent } from './order-create/order-create.component';
+import { OrdersTableComponent } from './orders-table/orders-table.component';
+import {OrderService} from './order.service';
 
 const ROUTES = [
   {
@@ -24,6 +26,14 @@ const ROUTES = [
   {
     path: 'search',
     component: ProductSearchComponent
+  },
+  {
+    path: 'search/:orderId',
+    component: ProductSearchComponent
+  },
+  {
+    path: 'orders',
+    component: OrdersTableComponent
   }
 ];
 
@@ -33,7 +43,8 @@ const ROUTES = [
     CreateProductComponent,
     ProductSearchComponent,
     ProductsTableComponent,
-    OrderCreateComponent
+    OrderCreateComponent,
+    OrdersTableComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +52,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
-  providers: [ProductService],
+  providers: [ProductService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
